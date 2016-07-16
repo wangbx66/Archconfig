@@ -146,11 +146,11 @@ reboot
 ### Quick Boot for GRUB
 Enter BIOS and enable quietboot, then
 ```
-sudo vim /etc/default/grub
+vim /etc/default/grub
 (vim) GRUB_TIMEOUT=0
 (vim) GRUB_HIDDEN_TIMEOUT=0
 (vim) GRUB_HIDDEN_TIMEOUT_QUIET=TRUE
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### Yaourt
@@ -166,22 +166,6 @@ cd yaourt
 makepkg -sri
 cd ../..
 rm -rf build-repo
-```
-
-### Touchscreen/Keyboard/Lid
-```
-gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
-(deprecated)$ sudo pacman -S xf86-input-libinput
-(deprecated)$ sudo pacman -S xorg-xinput
-(deprecated)$ sudo libinput-list-devices
-(deprecated)$ xinput list-props "SynPS/2 Synaptics TouchPad"
-(deprecated) (bashrc) xinput set-prop  "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
-(Spectre) copy keycode 119 to 105
-(bashrc) xmodmap ~/.Xmodmap
-sudo vim /etc/systemd/logind.conf
-(vim) HandleLidSwitch=suspend
-(vim) HandleLidSwitchDocked=suspend
-sudo restart systemd-logind
 ```
 
 ### Steam and Lib32
@@ -207,10 +191,29 @@ yaourt -S cudnn
 ### Chinese Font and Input
 ```
 pacman -S ttf-liberation wqy-zenhei ttf-dejavu wqy-microhei
-sudo pacman -S ibus-libpinyin
+pacman -S ibus-libpinyin
 ibus-daemon -d -x
 ```
 Then set input source in Gnome>Language
+
+### Touchscreen/Keyboard/Lid
+* **From this point on, you should *su wangbx* and use sudo if needed**
+```
+gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
+(deprecated)$ sudo pacman -S xf86-input-libinput
+(deprecated)$ sudo pacman -S xorg-xinput
+(deprecated)$ sudo libinput-list-devices
+(deprecated)$ xinput list-props "SynPS/2 Synaptics TouchPad"
+(deprecated) (bashrc) xinput set-prop  "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
+(Spectre)$ xmodmap -pke > ~/.Xmodmap
+(Spectre)$ vim ~/.Xmodmap
+(Spectre) (vim) copy keycode 119 Delete to 105 Control_R
+(bashrc) xmodmap ~/.Xmodmap
+sudo vim /etc/systemd/logind.conf
+(vim) HandleLidSwitch=suspend
+(vim) HandleLidSwitchDocked=suspend
+sudo restart systemd-logind
+```
 
 ### Personalization
 Firstly set the following
@@ -229,11 +232,11 @@ gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothi
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 0
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
 gsettings set org.gnome.desktop.lockdown disable-lock-screen true
-pacman -S bash-completion
-pacman -S gedit-code-assistance
-pacman -S gedit-plugins
-pacman -S aspell-en
-(hdajack)$ pacman -S alsa-utils
+sudo pacman -S bash-completion
+sudo pacman -S gedit-code-assistance
+sudo pacman -S gedit-plugins
+sudo pacman -S aspell-en
+(hdajack)$ sudo pacman -S alsa-utils
 (hdajack)$ hdajackretask
 ```
 After that, update keyring passphrase using command *seahorse*, rightclick *login*, then click *change password*. Finally configure git and proxy/printer according to their separate notes.
@@ -254,9 +257,9 @@ Comment=gnome-terminal
 
 ### Additional Packages
 ```
-pacman -S smplayer
-pacman -S texlive-most
-pacman -S python-pip
+sudo pacman -S smplayer
+sudo pacman -S texlive-most
+sudo pacman -S python-pip
 pip install --upgrade --user scipy
 yaourt -S google-chrome
 yaourt -S lightscreen
