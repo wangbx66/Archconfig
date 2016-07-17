@@ -16,7 +16,7 @@ Normally to make a bootloader using an existing archlinux system
 ```
 lsblk
 umount /dev/sdx
-sudo dd bs=4M if=out/archlinux-*.iso of=/dev/sdx && sync
+sudo dd bs=4M if=out/[iso] of=/dev/sdx && sync
 sudo dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
 ```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
