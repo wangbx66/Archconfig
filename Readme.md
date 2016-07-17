@@ -228,7 +228,7 @@ Firstly set the following
 * Gnome>Power
 * Gnome>Shortcut>  
 Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*
-Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "source /home/wangbx/.bashrc"*
+Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
 * Terminal>Preference
 * Gedit>Preference
 * Chrome>Settings>Zoom
