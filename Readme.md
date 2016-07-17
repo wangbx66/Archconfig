@@ -21,6 +21,14 @@ sudo dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
 ```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
 
+After that you could grant turn the drive back into storage device if it's not already. To do this,
+```
+sudo parted /dev/sdx
+(parted) mklabel gpt
+(parted) quit
+sudo mkfs.ext4 /dev/sdx
+```
+
 ### Intel RST
 
 * Press ESC/F2/F11/F12/DEL to enter BIOS
