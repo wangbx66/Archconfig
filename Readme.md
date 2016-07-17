@@ -134,7 +134,7 @@ visudo
 (wifi)$ dhcpcd wlo1
 (nvidia)$ pacman -S nvidia nvidia-libgl
 (intel)$ pacman -S xf86-video-intel mesa-ibgl
-pacman -S gnome gnome-extra
+pacman -S gnome gedit seahorse
 (laptop/touchscreen) choose xf86-input-libinput
 vim /etc/gdm/custom.conf
 (vim) WaylandEnable=false
