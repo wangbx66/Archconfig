@@ -228,7 +228,7 @@ Firstly set the following
 * Gnome>Power
 * Gnome>Shortcut>  
 Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*
-Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
+(deprecated) Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
 * Terminal>Preference
 * Gedit>Preference
 * Chrome>Settings>Zoom
@@ -239,8 +239,9 @@ Then conduct the following settings in terminal
 gsettings set org.gnome.desktop.interface clock-show-date true
 gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 0
-gsettings set org.gnome.settings-daemon.plugins.power idle-dim true
+gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
 gsettings set org.gnome.desktop.lockdown disable-lock-screen true
+gsettings set org.gnome.desktop.screensaver lock-enabled false
 sudo pacman -S bash-completion
 sudo pacman -S gedit-code-assistance
 sudo pacman -S gedit-plugins
