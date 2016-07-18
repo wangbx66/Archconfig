@@ -252,7 +252,7 @@ sudo pacman -S aspell-en
 After that, update keyring passphrase using command *seahorse*, rightclick *login*, then click *change password*. Finally configure git and proxy/printer according to their separate notes.
 
 ### Autostart Terminal
-* Take *gnome-terminal*as an example, what you need is to initialize a *~/.config/autostart/terminal.desktop* file, the cat the following content to it
+* Take *gnome-terminal* as an example, what you need is to initialize a *~/.config/autostart/terminal.desktop* file, the cat the following content to it
 ```
 [Desktop Entry]
 Type=Application
