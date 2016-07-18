@@ -227,8 +227,7 @@ sudo restart systemd-logind
 Firstly set the following
 * Gnome>Power
 * Gnome>Shortcut>  
-Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*
-
+Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*  
 (deprecated) Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
 * Terminal>Preference
 * Gedit>Preference
