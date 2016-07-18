@@ -9,7 +9,7 @@ If you need w3m to resolve the captivate portal
 sudo pacman -S archiso
 sudo cp -r /usr/share/archiso/configs/releng/ ~/archlive
 cd ~/archlive
-echo w3m >> packages.both
+echo "w3m" >> packages.both
 sudo ./build.sh -v
 ```
 Normally to make a bootloader using an existing archlinux system
@@ -21,7 +21,7 @@ sudo dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
 ```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
 
-After that you could grant turn the drive back into storage device if it's not already. To do this,
+After that you could turn the drive back into storage device if it's not already. To do this,
 ```
 sudo parted /dev/sdx
 (parted) mklabel gpt
@@ -32,12 +32,12 @@ sudo mkfs.ext4 /dev/sdx
 ### Intel RST
 
 * Press ESC/F2/F11/F12/DEL to enter BIOS
-* disable "Quiet Boot"
-* set sata mode to "RAID"
-* ctrl-I to enter and create raid volume
+* Disable "Quiet Boot"
+* Set sata mode to "RAID"
+* Ctrl-I to enter and create raid volume
 
 ### Partition for EFI+NVMe
-First check the following command populates
+First check if the following command populates
 ```
 ls /sys/firmware/efi/efivars
 ```
@@ -86,7 +86,7 @@ pacstrap -i /mnt base base-devel
 
 ### Bootloader for EFI+NVMe
 
-* **By the time of mid July 2016, NVMe is not supported by EFISTUB, hence efibootmgr and grub will not work on such disks. The two possible solution are grub-git and systemd at the moment.**
+* **By the time of mid July 2016, NVMe is not supported by EFISTUB, hence *efibootmgr* and *grub* will not work on such disks. The two possible solution are *grub-git* and *systemd* at the moment.**
 * This section features the later
 ```
 arch-chroot /mnt /bin/bash
@@ -94,7 +94,7 @@ echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
 locale-gen
 (UTC-4)$ ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-(UTC-4)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+(UTC+8)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
 pacman -S iw wpa_supplicant dialog vim
 bootctl --path=/boot install
 cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries
@@ -152,7 +152,7 @@ reboot
 ```
 
 ### Quick Boot for GRUB
-Enter BIOS and enable quietboot, then
+Set this if you're using *grub*. Enter BIOS and enable quietboot, then
 ```
 vim /etc/default/grub
 (vim) GRUB_TIMEOUT=0
@@ -205,7 +205,7 @@ ibus-daemon -d -x
 Then set input source in Gnome>Language
 
 ### Touchscreen/Keyboard/Lid
-* **From this point on, you should *su wangbx* and use sudo if needed**
+* **From this point on, you should *su wangbx* and use sudo whenever needed**
 ```
 gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 (deprecated)$ sudo pacman -S xf86-input-libinput
@@ -228,6 +228,7 @@ Firstly set the following
 * Gnome>Power
 * Gnome>Shortcut>  
 Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*
+
 (deprecated) Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
 * Terminal>Preference
 * Gedit>Preference
@@ -247,7 +248,7 @@ sudo pacman -S gedit-code-assistance
 sudo pacman -S gedit-plugins
 sudo pacman -S aspell-en
 (hdajack)$ sudo pacman -S alsa-utils
-(hdajack)$ hdajackretask
+(hdajack)$ sudo hdajackretask
 ```
 After that, update keyring passphrase using command *seahorse*, rightclick *login*, then click *change password*. Finally configure git and proxy/printer according to their separate notes.
 
