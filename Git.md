@@ -1,6 +1,6 @@
 # Git Config & Manual
 
-### Install & Consiguration
+### Install & Configuration
 ```
 sudo pacman -S git
 yaourt -S bcompare
@@ -17,56 +17,101 @@ git config --global credential.helper store
 ```
 
 ### Remote Source Control
+
+To list the remote
 ```
 git remote -v
 git remote show [remote]
-git remote add [remote] [url/localpath]
+```
+And to modify the remote list
+```
+git remote add [remote] [url]
 git remote rm [remote]
 ```
 
 ### Pull & Push
+
+To fetch the updates, look at what's new, and merge it to the local repo,
 ```
 git fetch [remote] [branch]
-git diff master origin/master # check difference
+git diff master origin/master
 git merge [remote]/[branch]
-git checkout -b [branch] [remote]/[branch] # create, fetch, and merge remote branch
-git pull (git fetch origin/master; git merge prigin/master)
-git mergetool
+(conflict)$ git mergetool
+```
+Alternatively, do either for [branch]
+```
+git checkout -b [branch] [remote]/[branch]
+```
+Or for *master*
+```
+git pull
+```
+For mis-added or mis-named file, modify the tree using
+```
 git rm --cached [file] #remove from tree but keep in working dir
-git rm \*~ #also remove from working dir, respect escape
-git mv file_ori file
-git diff #compares working dir and staging area
-git diff --cached (git diff --staged) #show staged changes
-git commit -a -m 'en' (git add -A; git commit -m 'en')
+git mv [file] [new]
+```
+To take differences, introduced by *git add*, by *git commit*, between arbitrary commits such as *master* and *origin/master*, and one-side difference, use
+```
+git diff
+git diff --cached
+git diff [commit1] [commit2]
+git diff [commit1]...[commit2]
+```
+To quickly synchronize the work to remote, use
+```
+git commit -a -m '[message]'
 git push [remote] [branch]
 ```
 
-### Branch
+### Branching
+
+To fetch, list all branches, or show obselete or active branches
 ```
-git fetch --all # fetch all branches
-git branch -vv # show branches, upstreams, and status
-git branch --merged # show obselete branches, --no-merged for active
-git branch -d [branch] # delete
-git branch -u [remote]/[branch] # set upstream
-git push [remote] --delete [branch] # delete [remote]/[branch]
-git remote show [remote] (git ls-remote [remote]) # show push/pull branch config
-git push [remote] [branch] # push [branch] to [remote]/[branch]
-git branch [branch] # creates local [branch]
-git checkout -b [branch] # creates and switch to [branch]
-git checkout -b [localbranch] [remote]/[branch] # clone, rename and switch
-git checkout [branch] # clone if not exists, and switch
-git merge [branch] # merge [branch] to current branch
+git fetch --all
+git branch -vv
+git branch --merged
+git branch --no-merged
+```
+To delete a local or remote branch
+```
+git branch -d [branch]
+git push [remote] --delete [branch]
+```
+To list all branches on *remote*
+```
+git remote show [remote] (git ls-remote [remote])
+```
+To create a local branch and switch, or clone a remote branch and switch,
+```
+git checkout -b [branch]
+git checkout [branch]
+```
+Finally to merge *branch* into current branch, which usually happens on *master*
+```
+git merge [branch]
 ```
 
 ### History & Undo
-* Use with caution, undo is the only thing you cant undo
+
+* **Use with caution, undo is the only thing you can not undo**
 * [Source](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) about history
+
+To, for example, checkout the workload of last 2 weeks. *h*, *an*, *ar* and *s* are standing for hast, author, time and message, respectively
 ```
-git log # list recent commits, also list diff of last x commits if -p -2, also list #+- if --stat, limit it with --since=2.weeks
-git log --pretty=format:"%h - %an, %ar : %s" #stands for hash, author, time, msg
-git checkout -- file # revert file to last commit
-git reset HEAD file # undo add file
-git commit --amend # undo last commit and commit again
+git log --stat --since=2.weeks --pretty=format:"%h - %an, %ar : %s"
+```
+To revert a file to last commit
+```
+git checkout -- file
+```
+To undo adding a file
+```
+git reset HEAD file
+```
+To undo last commit
+```
+git commit --amend
 ```
 
 ### Example - Merge Repos
