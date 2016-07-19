@@ -18,7 +18,7 @@ git config --global credential.helper store
 
 ### Remote Source Control
 
-To list the remote
+To list the remotes
 ```
 git remote -v
 git remote show [remote]
@@ -31,7 +31,7 @@ git remote rm [remote]
 
 ### Pull & Push
 
-To fetch the updates, look at what's new, and merge it to the local repo,
+To fetch the updates, inspect what's new, and merge it to the local repo,
 ```
 git fetch [remote] [branch]
 git diff master origin/master
@@ -48,10 +48,10 @@ git pull
 ```
 For mis-added or mis-named file, modify the tree using
 ```
-git rm --cached [file] #remove from tree but keep in working dir
+git rm --cached [file]
 git mv [file] [new]
 ```
-To take differences, introduced by *git add*, by *git commit*, between arbitrary commits such as *master* and *origin/master*, and one-side difference, use
+To take differences introduced by *git add*, or by *git commit*, or between arbitrary commits such as *master* and *origin/master*, or one-side differences, use
 ```
 git diff
 git diff --cached
@@ -82,7 +82,7 @@ To list all branches on *remote*
 ```
 git remote show [remote] (git ls-remote [remote])
 ```
-To create a local branch and switch, or clone a remote branch and switch,
+To create a local branch and switch to that, or clone a remote branch and switch to that,
 ```
 git checkout -b [branch]
 git checkout [branch]
@@ -94,10 +94,10 @@ git merge [branch]
 
 ### History & Undo
 
-* **Use with caution, undo is the only thing you can not undo**
+* **Use with caution! Undo is the only thing you can not undo**
 * [Source](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History) about history
 
-To, for example, checkout the workload of last 2 weeks. *h*, *an*, *ar* and *s* are standing for hast, author, time and message, respectively
+To, for example, checkout the workload of last 2 weeks, where *h*, *an*, *ar* and *s* are standing for hast, author, time and message, respectively
 ```
 git log --stat --since=2.weeks --pretty=format:"%h - %an, %ar : %s"
 ```
@@ -114,6 +114,24 @@ To undo last commit
 git commit --amend
 ```
 
+### Submodule
+
+Add a submodule using
+```
+git submodule add [remote]
+git submodule init
+```
+And for everytime to update submodule
+```
+git pull --recurse-submodules
+git submodule update --recursive
+```
+To delelte a submodule
+```
+git submodule deinit [submodule]
+git rm [submodule]
+```
+
 ### Example - Merge Repos
 ```
 git clone https://github.com/wangbx66/proj1
@@ -127,7 +145,7 @@ proj2$ git merge proj1/master
 ```
 git push [remote] --delete [branch]
 git checkout -b [branch]
-(working on local ...)
+# working on local ...
 git pull [remote] master
 git push [remote] [branch]
 git checkout master
@@ -139,27 +157,4 @@ git merge [branch]
 git reset HEAD --hard
 git clean -fd
 git pull
-```
-
-### Example - Submodule
-```
-git submodule add [remote]
-git submodule init
-(everytime to update submodule)
-git pull --recurse-submodules
-git submodule update --recursive
-(to delelte a submodule)
-git submodule deinit [submodule]
-git rm [submodule]
-```
-
-### Example - See What's New on Remote
-```
-git diff master...origin/master
-```
-
-### Example - No Longer Track A File
-```
-echo "filename" >> .gitignore
-git rm --cached filename
 ```
