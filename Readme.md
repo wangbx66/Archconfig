@@ -237,6 +237,10 @@ Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*
 Then conduct the following settings in terminal
 ```
 gsettings set org.gnome.desktop.interface clock-show-date true
+gsettings set org.gnome.desktop.interface document-font-name 'Sans 14'
+gsettings set org.gnome.desktop.interface font-name 'Cantarell 14'
+gsettings set org.gnome.desktop.interface monospace-font-name 'Monospace 14'
+gsettings set org.gnome.nautilus.desktop font 'Cantarell 14'
 gsettings set org.gnome.settings-daemon.plugins.power power-button-action 'nothing'
 gsettings set org.gnome.settings-daemon.plugins.power idle-brightness 0
 gsettings set org.gnome.settings-daemon.plugins.power idle-dim false
