@@ -223,6 +223,24 @@ sudo vim /etc/systemd/logind.conf
 sudo restart systemd-logind
 ```
 
+### Redshift
+
+* Firstly install using
+```
+sudo pacman -S redshift
+```
+* Copy the example configuration file into *~/.config/redshift.conf*, then modify e.g. for 40N 74W
+```
+lat=40.3573
+lon=-74.6672
+screen=0
+```
+* Start the app with
+```
+redshift-gtk
+```
+and right-click on the redshift icon on system notification tray, check *autostart*
+
 ### Personalization
 Firstly set the following
 * Gnome>Power
