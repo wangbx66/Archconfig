@@ -270,6 +270,7 @@ sudo pacman -S gedit-plugins
 sudo pacman -S aspell-en
 sudo pacman -S file-roller
 sudo pacman -S android-file-transfer
+sudo pacman -S exfat-utils
 (hdajack)$ sudo pacman -S alsa-utils
 (hdajack)$ sudo hdajackretask
 ```
