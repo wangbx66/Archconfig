@@ -231,8 +231,10 @@ sudo pacman -S redshift
 ```
 * Copy the example configuration file into *~/.config/redshift.conf*, then modify e.g. for 40N 74W
 ```
+[manual]
 lat=40.3573
 lon=-74.6672
+[randr]
 screen=0
 ```
 * Start the app with
