@@ -99,7 +99,7 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 locale-gen
 (UTC-4)$ ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 (UTC+8)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
-pacman -S iw wpa_supplicant dialog w3m vim wireless_tools
+pacman -S iw wpa_supplicant dialog w3m vim wireless_tools net-tools
 ```
 
 ### Bootloader for EFI+NVMe
