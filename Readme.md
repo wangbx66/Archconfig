@@ -1,10 +1,10 @@
 # Archlinux Installation Guide
 
-This guide features the installation process on *a)* a relative old-fation desktop with SATA3 RAID0 SSD, using traditional BIOS boot mode and *b)* an HP Spectre 13 laptop, with Skylake processor and single NVMe SSD disk, using UEFI mode, respectively.
+This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using UEFI mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, respectively.
 
 ### USB Flash Bootloader
 
-If you need w3m to resolve the captivate portal
+If you need w3m to resolve the ~~stupid~~ captivate portal
 ```
 sudo pacman -S archiso
 sudo cp -r /usr/share/archiso/configs/releng/ ~/archlive
@@ -16,10 +16,11 @@ Normally to make a bootloader using an existing archlinux system
 ```
 lsblk
 umount /dev/sdx
-sudo dd bs=4M if=out/[iso] of=/dev/sdx && sync
-sudo dd count=1 bs=512 if=/dev/zero of=/dev/sdx && sync
+sudo dd bs=4M if=out/[iso] of=/dev/sdx status=progress && sync
 ```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
+
+If you need to retrive something from the machine, first boot the usb installation media, then chroot into the existing system. After that, format the installation media disk into *ext4*, and mount it to */mnt*. Finally copy things to /mnt and umount the disk, and re-make the installation media.
 
 After that you could turn the drive back into storage device if it's not already. To do this,
 ```
@@ -37,6 +38,10 @@ sudo mkfs.ext4 /dev/sdx
 * Ctrl-I to enter and create raid volume
 
 ### Partition for EFI+NVMe
+With the following boot option boot the device
+```
+nomodeset nouveau.modeset=0
+```
 First check if the following command populates
 ```
 ls /sys/firmware/efi/efivars
@@ -63,9 +68,11 @@ mount /dev/nvme0n1p1 /mnt/boot
 ```
 parted /dev/md/zero_0
 (parted) mklabel msdos
-(parted) mkpart primary ext4 1MiB 100MiB
+(parted) mkpart primary ext4 1MiB 513MiB
 (parted) set 1 boot on
-(parted) mkpart primary ext4 100MiB 100%
+(parted) mkpart primary linux-swap 514MiB 16898MiB
+(parted) mkpart primary ext4 16899MiB 100%
+(parted) quit
 mkfs.ext4 /dev/md/zero_0p1
 mkfs.ext4 /dev/md/zero_0p2
 mount /dev/md/zero_0p2 /mnt
@@ -77,11 +84,22 @@ mount /dev/md/zero_0p1 /mnt/boot/
 
 ```
 timedatectl set-ntp true
-genfstab -U /mnt > /mnt/etc/fstab
 wifi-menu
+w3m www.baidu.com
 vim /etc/pacman.d/mirrorlist
 (vim) copy 163.com kernel.org columbia.edu mirror to head
 pacstrap -i /mnt base base-devel
+genfstab -U /mnt >> /mnt/etc/fstab
+```
+
+### Locale
+```
+echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
+echo LANG=en_US.UTF-8 >> /etc/locale.conf
+locale-gen
+(UTC-4)$ ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
+(UTC+8)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
+pacman -S iw wpa_supplicant dialog w3m vim wireless_tools
 ```
 
 ### Bootloader for EFI+NVMe
@@ -90,12 +108,6 @@ pacstrap -i /mnt base base-devel
 * This section features the later
 ```
 arch-chroot /mnt /bin/bash
-echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
-echo LANG=en_US.UTF-8 >> /etc/locale.conf
-locale-gen
-(UTC-4)$ ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
-(UTC+8)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
-pacman -S iw wpa_supplicant dialog vim
 bootctl --path=/boot install
 cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries
 blkid -s PARTUUID -o value /dev/nvme0n1p3 >> /boot/loader/entries/arch.conf
@@ -118,7 +130,7 @@ mdadm --detail --scan >> /etc/mdadm.conf
 vim /etc/mkinitcpio.conf
 (vim) add mdadm_udev to HOOKS=
 (vim) add ext4 to MODULES=
-grub-install --recheck /dev/md/ZERO_0
+grub-install --recheck /dev/md/zero_0
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -p linux
 exit
@@ -126,7 +138,7 @@ umount -R /mnt
 reboot
 ```
 
-### Gnome
+### Desktop
 ```
 hostnamectl set-hostname myhostname
 passwd
@@ -134,6 +146,7 @@ useradd -m wangbx
 passwd wangbx
 visudo
 (visudo) wangbx ALL=(ALL) ALL
+ip link list
 (lan)$ ip link set eno1 up
 (lan)$ dhcpcd eno1
 (wifi)$ ip link set wlo1 up
