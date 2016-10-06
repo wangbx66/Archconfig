@@ -74,7 +74,9 @@ sudo systemctl start org.cups.cupsd.service
 Finally configure the printer using *cups*. Note these steps should have to be executed everytime for a Linux kernel update
 * Open chrome and go [http://127.0.0.1:631/](http://127.0.0.1:631/)
 * Login using *root* and the passphrase of root
+* Choose printer type, for *lp131* it's Windows Samba
 * Go to the connectivity tab, and enter the printer address, for example,  *smb://bxwang:[psw]@137.189.91.116/lp131*
+* Choose driver, for *lp131* it's *HP LaserJet 4000 Series hpijs pcl3*
 
 ### Set up WiFi 8812driver
 Install the driver
