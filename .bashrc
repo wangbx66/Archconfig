@@ -1,5 +1,7 @@
 [[ $- != *i* ]] && return
 
+PS1='[\u@\h \W]\$ '
+
 alias ls='ls --color=auto'
 alias la='ls -A'
 alias sudo='sudo -E'
