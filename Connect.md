@@ -61,7 +61,7 @@ Also *samba* for SMB
 ```
 sudo pacman -S samba
 sudo vim /etc/samba/smb.conf.default (edit MyGroup->home)
-(vim) Change MyGroup to home
+(vim) Change MYGROUP to home
 sudo cp /etc/samba/smb.conf.default /etc/samba/smb.conf
 ```
 For *hp* printer, install the library and driver
