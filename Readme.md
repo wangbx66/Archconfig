@@ -9,7 +9,8 @@ If you need w3m to resolve the ~~stupid~~ captivate portal
 sudo pacman -S archiso
 sudo cp -r /usr/share/archiso/configs/releng/ ~/archlive
 cd ~/archlive
-echo "w3m" >> packages.both
+vim packages.both
+(vim) append "w3m" to the list
 sudo ./build.sh -v
 ```
 Normally to make a bootloader using an existing archlinux system
