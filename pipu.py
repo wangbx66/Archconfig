@@ -3,9 +3,9 @@ import subprocess
 
 def source(project):
     if project.lower() == 'theano':
-        return 'git+git://github.com/Theano/Theano.git'
+        return 'git+https://github.com/Theano/Theano.git'
     elif project.lower() == 'lasagne':
-        return 'git+git://github.com/Lasagne/Lasagne.git'
+        return 'git+https://github.com/Lasagne/Lasagne.git'
     elif project.lower() == 'pip':
         return 'null'
     else:
