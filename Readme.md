@@ -1,6 +1,6 @@
 # Archlinux Installation Guide
 
-This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using UEFI mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, respectively.
+This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, respectively.
 
 ### USB Flash Bootloader
 
