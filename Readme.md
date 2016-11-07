@@ -4,7 +4,7 @@ This guide features the installation process on *a)* a relative old-fashion desk
 
 ### USB Flash Bootloader
 
-If you need w3m to resolve the ~~stupid~~ captivate portal
+If you need w3m to resolve the ~~stupid and insecure~~ captivate portal
 ```
 sudo pacman -S archiso
 sudo cp -r /usr/share/archiso/configs/releng/ ~/archlive
