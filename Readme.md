@@ -229,7 +229,7 @@ gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 (deprecated) (bashrc) xinput set-prop  "SynPS/2 Synaptics TouchPad" "libinput Tapping Enabled" 1
 (Spectre)$ xmodmap -pke
 (Spectre)$ vim ~/.Xmodmap
-(Spectre) (vim) keycode 105 Delete NoSymbol Delete
+(Spectre) (vim) keycode 105 = Delete NoSymbol Delete
 (bashrc) xmodmap ~/.Xmodmap
 sudo vim /etc/systemd/logind.conf
 (vim) HandleLidSwitch=suspend
