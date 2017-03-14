@@ -287,8 +287,9 @@ sudo pacman -S aspell-en
 sudo pacman -S file-roller
 sudo pacman -S android-file-transfer
 sudo pacman -S exfat-utils
-(hdajack)$ sudo pacman -S alsa-utils
-(hdajack)$ sudo hdajackretask
+sudo pacman -S alsa-utils
+sudo pacman -S gtk3
+sudo hdajackretask
 ```
 After that, update keyring passphrase using command *seahorse*, rightclick *login*, then click *change password*. Finally configure git and proxy/printer according to their separate notes.
 
