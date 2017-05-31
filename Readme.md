@@ -19,6 +19,13 @@ lsblk
 umount /dev/sdx
 sudo dd bs=4M if=out/[iso] of=/dev/sdx status=progress && sync
 ```
+Alternatively on a Mac, 
+```
+diskutil list
+diskutil partitionDisk /dev/diskx 1 "Free Space" "unused" "100%"
+dd if=[iso] of=/dev/diskx bs=1m
+diskutil eject /dev/diskx
+```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
 
 If you need to retrive something from the machine, first boot the usb installation media, then chroot into the existing system. After that, format the installation media disk into *ext4*, and mount it to */mnt*. Finally copy things to /mnt and umount the disk, and re-make the installation media.
