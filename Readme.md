@@ -102,6 +102,7 @@ genfstab -U /mnt >> /mnt/etc/fstab
 
 ### Locale
 ```
+arch-chroot /mnt /bin/bash
 echo en_US.UTF-8 UTF-8 >> /etc/locale.gen
 echo LANG=en_US.UTF-8 >> /etc/locale.conf
 locale-gen
@@ -115,7 +116,6 @@ pacman -S iw wpa_supplicant dialog w3m vim wireless_tools net-tools
 * **By the time of mid July 2016, NVMe is not supported by EFISTUB, hence *efibootmgr* and *grub* will not work on such disks. The two possible solution are *grub-git* and *systemd* at the moment.**
 * This section features the later
 ```
-arch-chroot /mnt /bin/bash
 bootctl --path=/boot install
 cp /usr/share/systemd/bootctl/arch.conf /boot/loader/entries
 blkid -s PARTUUID -o value /dev/nvme0n1p3 >> /boot/loader/entries/arch.conf
