@@ -46,7 +46,7 @@ sudo mkfs.ext4 /dev/sdx
 * Ctrl-I to enter and create raid volume
 
 ### Partition for EFI+NVMe
-With the following boot option boot the device
+Make sure the secure boot option has been disabled and the SATA mode has been set to ACHI or RAID whichever it should be. Also disable legacy boot just in case. Boot, if necessary, with the following boot option
 ```
 nomodeset nouveau.modeset=0
 ```
