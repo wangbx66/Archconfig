@@ -237,7 +237,8 @@ gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 (Spectre)$ xmodmap -pke
 (Spectre)$ vim ~/.Xmodmap
 (Spectre) (vim) keycode 105 = Delete NoSymbol Delete
-(bashrc) xmodmap ~/.Xmodmap
+(.bashrc) xmodmap ~/.Xmodmap
+(.profile) source .bashrc
 sudo vim /etc/systemd/logind.conf
 (vim) HandleLidSwitch=suspend
 (vim) HandleLidSwitchDocked=suspend
