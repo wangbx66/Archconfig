@@ -129,6 +129,11 @@ umount -R /mnt
 reboot
 ```
 
+For Dell 9360 or 9365, force s2idle to be the default suspend method by using instead
+```
+(vim) modify root=PARTUUID=[UUID] add_efi_memmap mem_sleep_default=s2idle
+```
+
 ### Bootloader for BIOS+RAID
 * **For RAID reference only; you should no longer use BIOS**
 ```
