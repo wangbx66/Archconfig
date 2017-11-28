@@ -1,6 +1,6 @@
 # Archlinux Installation Guide
 
-This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, respectively.
+This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, and *c)* an Dell XPS 13 2-in-1 9365 laptop, with Kobelake i7 and NVMe SSD as well, respectively.
 
 ### USB Flash Bootloader
 
@@ -167,7 +167,7 @@ ip link list
 (wifi)$ iw dev wlo1 connect [essid] key 0:[key]
 (wifi)$ dhcpcd wlo1
 (nvidia)$ pacman -S nvidia nvidia-libgl
-(intel)$ pacman -S xf86-video-intel mesa-ibgl
+(intel)$ pacman -S xf86-video-intel mesa-libgl
 pacman -S gnome gedit seahorse
 (laptop/touchscreen) choose xf86-input-libinput
 vim /etc/gdm/custom.conf
