@@ -222,6 +222,22 @@ cd bin/x86_64/linux/release
 yaourt -S cudnn
 ```
 
+### Ethereum
+
+```
+sudo systemctl enable ntp
+sudo systemctl start ntp
+sudo pacman -S mist
+```
+
+### ZCash
+
+The official ZCash wallet is in Linux within command line. The usage of 1.0 version is explained [here](https://github.com/zcash/zcash/wiki/1.0-User-Guide)
+
+```
+tbd
+```
+
 ### Chinese Font and Input
 ```
 pacman -S ttf-liberation wqy-zenhei ttf-dejavu wqy-microhei
