@@ -60,8 +60,8 @@ parted /dev/nvme0n1
 (parted) mklabel gpt
 (parted) mkpart primary ext4 1MiB 513MiB
 (parted) set 1 boot on
-(parted) mkpart primary linux-swap 514MiB 4610MiB
-(parted) mkpart primary ext4 4611MiB 100%
+(parted) mkpart primary linux-swap 514MiB 8706MiB
+(parted) mkpart primary ext4 8707MiB 100%
 (parted) quit
 mkfs.fat -F32 /dev/nvme0n1p1
 mkswap /dev/nvme0n1p2
@@ -82,8 +82,10 @@ parted /dev/md/zero_0
 (parted) mkpart primary ext4 16899MiB 100%
 (parted) quit
 mkfs.ext4 /dev/md/zero_0p1
-mkfs.ext4 /dev/md/zero_0p2
-mount /dev/md/zero_0p2 /mnt
+mkswap /dev/md/zero_0p2
+swapon /dev/md/zero_0p2
+mkfs.ext4 /dev/md/zero_0p3
+mount /dev/md/zero_0p3 /mnt
 mkdir -p /mnt/boot
 mount /dev/md/zero_0p1 /mnt/boot/
 ```
