@@ -141,11 +141,11 @@ For Dell 9360 or 9365, force s2idle to be the default suspend method by using in
 ```
 arch-chroot /mnt /bin/bash
 pacman -S grub
-mdadm --detail --scan >> /etc/mdadm.conf
+(raid) mdadm --detail --scan >> /etc/mdadm.conf
 vim /etc/mkinitcpio.conf
-(vim) add mdadm_udev to HOOKS=
+(vim,raid) add mdadm_udev to HOOKS=
 (vim) add ext4 to MODULES=
-grub-install --recheck /dev/md/zero_0
+grub-install --force --recheck /dev/md/zero_0
 grub-mkconfig -o /boot/grub/grub.cfg
 mkinitcpio -p linux
 exit
@@ -205,7 +205,7 @@ rm -rf build-repo
 ```
 
 ### Steam and Lib32
-```
+```••••
 vim /etc/pacman.conf
 (vim) [multilib]
 (vim) Include = /etc/pacman.d/mirrorlist
