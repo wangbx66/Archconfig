@@ -94,8 +94,14 @@ mount /dev/md/zero_0p1 /mnt/boot/
 
 ```
 timedatectl set-ntp true
-wifi-menu
-w3m www.baidu.com
+(static) ip addr add 137.189.90.84/22 dev eno1
+(static) ip route add default via 137.189.91.254
+(static) vim /etc/resolve.conf
+(static, vim) nameserver 137.189.91.187
+(static, vim) nameserver 137.189.91.188
+(static) export http_proxy=http://proxy.cse.cuhk.edu.hk:8000/
+(wifi) wifi-menu
+(wifi) w3m www.baidu.com
 vim /etc/pacman.d/mirrorlist
 (vim) copy 163.com kernel.org columbia.edu mirror to head
 pacstrap -i /mnt base base-devel
