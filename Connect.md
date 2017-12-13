@@ -60,9 +60,9 @@ sudo systemctl start org.cups.cupsd.service
 Also *samba* for SMB
 ```
 sudo pacman -S samba
-sudo vim /etc/samba/smb.conf.default (edit MyGroup->home)
+sudo gedit /etc/samba/smb.conf
+(vim) copy from https://git.samba.org/samba.git/?p=samba.git;a=blob_plain;f=examples/smb.conf.default;hb=HEAD
 (vim) Change MYGROUP to home
-sudo cp /etc/samba/smb.conf.default /etc/samba/smb.conf
 ```
 For *hp* printer, install the library and driver
 ```
