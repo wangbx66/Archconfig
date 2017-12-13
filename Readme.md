@@ -222,7 +222,7 @@ pacman -S multilib-devel lib32-alsa-plugins steam
 ### Cuda
 ```
 pacman -S cuda
-cd /opt/cuda/sample
+cd /opt/cuda/samples
 make
 cd bin/x86_64/linux/release
 ./deviceQuery
