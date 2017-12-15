@@ -218,6 +218,11 @@ vim /etc/pacman.conf
 pacman -Syyu
 pacman -S multilib-devel lib32-alsa-plugins steam
 ```
+For Nvidia cards, carefully install the latest version *lib32-nvidia-utils* instead of whatever provided with the multilib-devel package. To remove the packages, call
+```
+pacman -R $(paclist multilib | cut -f1 -d' ')
+```
+and switch back the *pacman.conf*
 
 ### Cuda
 ```
