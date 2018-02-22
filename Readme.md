@@ -243,14 +243,6 @@ sudo systemctl start ntp
 sudo pacman -S mist
 ```
 
-### ZCash
-
-The official ZCash wallet is in Linux within command line. The usage of 1.0 version is explained [here](https://github.com/zcash/zcash/wiki/1.0-User-Guide)
-
-```
-tbd
-```
-
 ### Chinese Font and Input
 ```
 pacman -S ttf-liberation wqy-zenhei ttf-dejavu wqy-microhei
@@ -277,6 +269,19 @@ sudo vim /etc/systemd/logind.conf
 (vim) HandleLidSwitch=suspend
 (vim) HandleLidSwitchDocked=suspend
 sudo restart systemd-logind
+```
+
+### Touchscreen
+
+To disable touchscreen, edit */etc/X11/xorg.conf.d/99-no-touchscreen.conf*, with the following content
+
+```
+Section "InputClass"
+    Identifier         "Touchscreen catchall"
+    MatchIsTouchscreen "on"
+
+    Option "Ignore" "on"
+EndSection
 ```
 
 ### Redshift
