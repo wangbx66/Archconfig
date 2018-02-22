@@ -251,7 +251,7 @@ ibus-daemon -d -x
 ```
 Then set input source in Gnome>Language
 
-### Touchscreen/Keyboard/Lid
+### Touchpad/Keyboard/Lid
 * **From this point on, you should *su wangbx* and use sudo whenever needed**
 ```
 gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
