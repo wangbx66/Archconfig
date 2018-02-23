@@ -68,6 +68,7 @@ For *hp* printer, install the library and driver
 ```
 sudo pacman -S hplip
 sudo cp /usr/share/ppd/HP/hp-laserjet_4000_series-* /usr/share/cups/model
+(alternatively) sudo cp /usr/share/ppd/HP/hp-officejet_pro_8710.ppd.gz  /usr/share/cups/model/
 sudo systemctl daemon-reload
 sudo systemctl start org.cups.cupsd.service
 ```
