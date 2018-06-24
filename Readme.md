@@ -252,7 +252,7 @@ ibus-daemon -d -x
 Then set input source in Gnome>Language
 
 ### Touchpad/Keyboard/Lid
-* **From this point on, you should *su wangbx* and use sudo whenever needed**
+* **From this point on, you should *su username* and use sudo whenever needed**
 ```
 gsettings set org.gnome.settings-daemon.peripherals.touchpad tap-to-click true
 (deprecated)$ sudo pacman -S xf86-input-libinput
@@ -269,6 +269,14 @@ sudo vim /etc/systemd/logind.conf
 (vim) HandleLidSwitch=suspend
 (vim) HandleLidSwitchDocked=suspend
 sudo restart systemd-logind
+```
+
+### Bluetooth
+
+```
+sudo pacman -S bluez bluez-utils
+sudo pacman -S gnome-bluetooth gnome-shell gnome-control-center
+sudo systemctl start bluetooth
 ```
 
 ### Touchscreen
