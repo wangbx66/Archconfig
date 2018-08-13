@@ -297,7 +297,7 @@ EndSection
 
 The following apps are known to **not** scale with the system display settings. It happens when the resolution is high (e.g. 3200x1800) with a 200% scale.
 
--- lightscreen
+-- lightscreen It can be replaced by deepin-screenshot. I have to manually add the shortcut to be command *deepin-screenshot*
 -- libpinyin
 
 ### Redshift
