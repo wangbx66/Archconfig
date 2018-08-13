@@ -293,6 +293,13 @@ Section "InputClass"
 EndSection
 ```
 
+### Display Scale
+
+The following apps are known to **not** scale with the system display settings. It happens when the resolution is high (e.g. 3200x1800) with a 200% scale.
+
+-- lightscreen
+-- libpinyin
+
 ### Redshift
 
 * Firstly install using
