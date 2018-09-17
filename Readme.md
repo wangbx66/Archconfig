@@ -247,7 +247,7 @@ sudo pacman -S mist
 ### Chinese Font and Input
 ```
 pacman -S ttf-liberation wqy-zenhei ttf-dejavu wqy-microhei
-pacman -S ibus-libpinyin
+pacman -S ibus-googlepinyin
 ibus-daemon -d -x
 ```
 Then set input source in Gnome>Language
