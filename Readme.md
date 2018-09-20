@@ -278,7 +278,10 @@ sudo restart systemd-logind
 sudo pacman -S bluez bluez-utils
 sudo pacman -S gnome-bluetooth gnome-shell gnome-control-center
 sudo systemctl start bluetooth
+sudo systemctl enable bluetooth.service
 ```
+
+Then pair and config the device through gnome bluetooth tools.
 
 ### Touchscreen
 
