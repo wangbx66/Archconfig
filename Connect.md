@@ -79,6 +79,14 @@ Finally configure the printer using *cups*. Note these steps should have to be e
 * Go to the connectivity tab, and enter the printer address, for example,  *smb://bxwang:[psw]@137.189.91.111/lp131*
 * Choose driver, for *lp131* it's *Ricoh Aficio MP 5002*
 
+```
+sudo pacman -S ghostscript foomatic-db foomatic-db-ppds
+sudo systemctl start avahi-daemon
+sudo systemctl enable avahi-daemon
+systemctl enable cups-browsed.service
+systemctl start cups-browsed.service
+```
+
 ### Set up WiFi 8812driver
 Install the driver
 ```
