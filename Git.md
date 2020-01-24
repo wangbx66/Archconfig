@@ -15,6 +15,10 @@ git config --global user.name "wangbx66"
 git config --global user.email "wangbx66@gmail.com"
 git config --global credential.helper store
 ```
+In case of password change
+```
+git config --global --unset user.password
+```
 
 ### Remote Source Control
 
