@@ -28,7 +28,7 @@ diskutil eject /dev/diskx
 ```
 Otherwise if you have no access to a Unix system, you can use [rufus](https://rufus.akeo.ie/) for Windows.
 
-If you need to retrive something from the machine, first boot the usb installation media, then chroot into the existing system. After that, format the installation media disk into *ext4*, and mount it to */mnt*. Finally copy things to /mnt and umount the disk, and re-make the installation media.
+If you need to retrive something from the machine, first boot from the usb installation media, then chroot into the existing system. After that, format the installation media disk into *ext4*, and mount it to */mnt*. Finally copy things to /mnt and umount the disk, and re-make the installation media.
 
 After that you could turn the drive back into storage device if it's not already. To do this,
 ```
@@ -54,6 +54,15 @@ First check if the following command populates
 ```
 ls /sys/firmware/efi/efivars
 ```
+Then, check the disk availability using
+```
+lsblk
+```
+or
+```
+fdisk -l
+```
+
 Part the device then
 ```
 parted /dev/nvme0n1
@@ -100,11 +109,16 @@ timedatectl set-ntp true
 (static, vim) nameserver 137.189.91.187
 (static, vim) nameserver 137.189.91.188
 (static) export http_proxy=http://proxy.cse.cuhk.edu.hk:8000/
-(wifi) wifi-menu
+(wifi) iwctl
+(iwctl) device list
+(iwctl) station [wlan] scan
+(iwctl) station [wlan] get-networks
+(iwctl) station [wlan] connect [ssid]
+(iwctl) station [wlan] show
 (wifi) w3m www.baidu.com
 vim /etc/pacman.d/mirrorlist
 (vim) copy 163.com kernel.org columbia.edu mirror to head
-pacstrap -i /mnt base base-devel
+pacstrap -i /mnt base base-devel linux linux-firmware
 genfstab -U /mnt >> /mnt/etc/fstab
 ```
 
@@ -116,8 +130,25 @@ echo LANG=en_US.UTF-8 >> /etc/locale.conf
 locale-gen
 (UTC-4)$ ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 (UTC+8)$ ln -s /usr/share/zoneinfo/Asia/Hong_Kong /etc/localtime
-pacman -S iw wpa_supplicant dialog w3m vim wireless_tools net-tools
+pacman -S iw wpa_supplicant dialog w3m vi vim wireless_tools net-tools iwd dhcpcd
 ```
+
+## Bootloader for AMD NVMe
+
+* **At the moment of Dec 2020, AMD CPU/GPU failed to find the Linux system image through the bootloader installed by Systemd. We use grub from Pacman instead.**
+```
+arch-chroot /mnt /bin/bash
+pacman -S grub
+vim /etc/mkinitcpio.conf
+(vim) add "nvme ext4" to MODULES=
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+mkinitcpio -p linux
+exit
+umount -R /mnt
+reboot
+```
+
 
 ### Bootloader for EFI+NVMe
 
@@ -163,10 +194,10 @@ reboot
 ```
 hostnamectl set-hostname myhostname
 passwd
-useradd -m wangbx
-passwd wangbx
+useradd -m bxiangwang
+passwd bxiangwang
 visudo
-(visudo) wangbx ALL=(ALL) ALL
+(visudo) bxiangwang ALL=(ALL) ALL
 ip link list
 (lan)$ ip link set eno1 up
 (lan)$ dhcpcd eno1
