@@ -243,11 +243,12 @@ rm -rf build-repo
 
 ### Steam and Lib32
 ```••••
+sudo pacman -S xf86-video-amdgpu mesa
 vim /etc/pacman.conf
 (vim) [multilib]
 (vim) Include = /etc/pacman.d/mirrorlist
 pacman -Syyu
-pacman -S multilib-devel lib32-alsa-plugins steam
+pacman -S multilib-devel lib32-alsa-plugins lib32-mesa steam
 ```
 For Nvidia cards, carefully install the latest version *lib32-nvidia-utils* instead of whatever provided with the multilib-devel package. To remove the packages, call
 ```
