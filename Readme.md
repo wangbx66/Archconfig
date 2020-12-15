@@ -268,6 +268,19 @@ cd bin/x86_64/linux/release
 yaourt -S cudnn
 ```
 
+### Cisco AnyConnect
+
+```
+sudo pacman -S openconnect
+printf 'password' | sudo openconnect --authgroup='CUHK(SZ)' --user='bxiangwang' --passwd-on-stdin --background vpn.cuhk.edu.cn
+```
+
+For aliases, append to bashrc
+```
+alias vpn="printf 'password' | sudo openconnect --authgroup='CUHK(SZ)' --user='bxiangwang' --passwd-on-stdin --background vpn.cuhk.edu.cn"
+alias devpn='sudo pkill openconnect'
+```
+
 ### Ethereum
 
 ```
