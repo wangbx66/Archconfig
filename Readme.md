@@ -1,6 +1,10 @@
 # Archlinux Installation Guide
 
-This guide features the installation process on *a)* a relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode and *b)* an HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, and *c)* an Dell XPS 13 2-in-1 9365 laptop, with Kobelake i7 and NVMe SSD as well, respectively.
+This guide features the installation process on  
+*a)* A relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode and  
+*b)* HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode, and  
+*c)* Dell XPS 13 2-in-1 9365 laptop, with Kobelake i7 and NVMe SSD as well, respectively.  
+*d)* Desktop with AMD X570 board and AMD 5950x CPU, running with DDR4 RAM and NVMe SSD  
 
 ### USB Flash Bootloader
 
@@ -326,7 +330,13 @@ sudo systemctl start bluetooth
 sudo systemctl enable bluetooth.service
 ```
 
-Then pair and config the device through gnome bluetooth tools.
+Then pair and config the device through gnome bluetooth tools. To auto-connect, we borrow from the yaourt package. Be aware tha the third command should not be have sudo prefix
+```
+yaourt -S bluetooth-autoconnect
+sudo systemctl enable bluetooth-autoconnect 
+systemctl --user enable pulseaudio-bluetooth-autoconnect
+```
+
 
 ### Touchscreen
 
