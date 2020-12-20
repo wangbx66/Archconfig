@@ -337,6 +337,10 @@ sudo systemctl enable bluetooth-autoconnect
 systemctl --user enable pulseaudio-bluetooth-autoconnect
 ```
 
+It is recommended to install the de facto Arch Linux tool for voice management, PauseAudio
+```
+sudo pacman -S pulseaudio pulseaudio-alsa pulseaudio-bluetooth pavucontrol
+```
 
 ### Touchscreen
 
