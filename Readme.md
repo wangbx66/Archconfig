@@ -359,7 +359,7 @@ EndSection
 
 The following apps are known to **not** scale with the system display settings. It happens when the resolution is high (e.g. 3200x1800) with a 200% scale.
 
-- lightscreen It can be replaced by deepin-screenshot. I have to manually add the shortcut to be command *deepin-screenshot*
+- lightscreen (deprecated). It can be replaced by deepin-screenshot.
 - libpinyin
 
 ### Redshift
@@ -388,6 +388,7 @@ Firstly set the following
 * Gnome>Shortcut>  
 Add *Ctrl-Alt-T* shortcut refers to *gnome-terminal --window --maximize &*  
 (deprecated) Add *Alt-Q* shortcut refers to *gnome-terminal -x bash -c "xmodmap /home/wangbx/.Xmodmap"*
+Add *Alt-A* shortcut refers to *deepin-screenshot*  
 * Terminal>Preference
 * Gedit>Preference
 * Chrome>Settings>Zoom
@@ -439,9 +440,9 @@ Comment=gnome-terminal
 sudo pacman -S smplayer
 sudo pacman -S texlive-most
 sudo pacman -S python-pip
+sudo pacman -S deepin-screenshot
 pip install --upgrade --user scipy
 yaourt -S google-chrome
-yaourt -S lightscreen
 yaourt -S overdue
 yaourt -S electronic-wechat
 ```
