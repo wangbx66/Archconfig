@@ -272,6 +272,21 @@ cd bin/x86_64/linux/release
 yaourt -S cudnn
 ```
 
+### AMDGPU Pro
+```
+sudo pacman -S mesa
+sudo pacman -S xf86-video-amdgpu
+yaourt -S amdgpu-pro-libgl
+(check if vulkan-amdgpu-pro, amf-amdgpu-pro, and lib32 versions are included)
+yaourt -S opencl-amd
+sudo reboot
+(check current driver; should show AMD)
+glxinfo | grep "OpenGL vendor string" | cut -f2 -d":" | xargs
+(check GPU and driver)
+sudo pacman -S mesa-demos
+glxinfo
+```
+
 ### Cisco AnyConnect
 
 ```
