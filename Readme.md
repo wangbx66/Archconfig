@@ -3,8 +3,8 @@
 This guide features the installation process on  
 *a)* A relative old-fashion desktop with supermicro Xeon E5-1620v2 /DDR3, SATA3 RAID0 SSD, with Pascal Titan X, using BIOS mode (2015)  
 *b)* HP Spectre 13 laptop, with Skylake i7 and NVMe SSD, using UEFI mode (2016)  
-*c)* Dell XPS 13 2-in-1 9365 laptop, with Kobelake i7 and NVMe SSD (2017)  
-*d)* Desktop with AMD X570 board and AMD 5950x CPU, running with DDR4 RAM and NVMe SSD (2020)  
+*c)* Dell XPS 13 9365 laptop, with Kobelake i7 and NVMe SSD (2017)  
+*d)* Desktop with AMD X570 board, Radeon RX 6900 XT GPU, and AMD 5950x CPU, running with DDR4 RAM and NVMe SSD (2020)  
 
 ### USB Flash Bootloader
 
